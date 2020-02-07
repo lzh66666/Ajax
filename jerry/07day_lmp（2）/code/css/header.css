@@ -1,0 +1,93 @@
+/*顶部导航通用样式*/
+.header{
+    height: 90px;
+    background-color: rgb(36,41,44);
+    overflow: hidden;
+    user-select: none;
+}
+.header-logo{
+    float: left;
+    background: url("../img/lmp-logo.png") no-repeat center;
+    width: 200px;
+    height: 90px;
+    padding-left: 40px;
+}
+
+.header-navi{
+    float: left;
+}
+.header-navi ul{
+    margin-top: 30px;
+}
+.header-navi li{
+    float: left;
+}
+.header-navi .select-headerA a{
+    background-color: rgb(16,157,89);
+    border-radius: 5px;
+}
+.header-navi li a{
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    padding: 5px 7px;
+    margin: 0 10px;
+    font-size: 18px;
+    color: #fff;
+}
+.header-navi li:hover a{
+    background-color: rgb(16,157,89);
+    border-radius: 5px;
+}
+.header-navi li a:hover{
+    background-color: rgb(16,157,89);
+    border-radius: 5px;
+}
+
+.header-menu{
+    float: right;
+    overflow: hidden;
+}
+.header-menu .he-me-input{
+    position: relative;
+    float: left;
+    margin-top: 30px;
+}
+.header-menu .he-me-input input{
+    width: 135px;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 7px 35px 7px 10px;
+    color: rgb(16,157,89);
+    outline: none;
+    font-weight: bold;
+}
+.header-menu .he-me-input .input-btn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    background: rgb(16,157,89) url("../img/lmp-fdj.png") no-repeat 38% 45%;
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+}
+.header-menu .he-me-input .input-btn:hover{
+    background: rgb(26,167,99) url("../img/lmp-fdj.png") no-repeat 38% 45%;
+}
+.header-menu a{
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    padding: 5px 7px;
+    margin: 30px 5px 0 5px;
+    font-size: 18px;
+    color: #fff;
+}
+.header-menu .ahidden{
+    display: none;
+}
+.header-menu .btn_hidden{
+    display: none;
+}
