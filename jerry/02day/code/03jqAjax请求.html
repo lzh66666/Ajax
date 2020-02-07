@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>jqAjax请求</title>
+</head>
+<body>
+<span>用户名：</span><input type="text" class="username"/><br/>
+<span>密码：</span><input type="text" class="password"/><br/>
+<button>get无参请求</button>
+<button>get带参请求</button>
+<button>post请求</button>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script>
+	var $userNameInput = $('.username');
+	var $passwordInput = $('.password');
+	var $btns = $('button');
+
+	$btns.eq(0).click(function (){
+		$.ajax({
+			//说明请求方式为get请求
+			type:'get',
+			//指明请求要发送到的php后台地址
+			url:'03jqAjax.php',
+			//指明与后台交互的数据格式为json
+			dataType:'json',
+			//当后台返回具体数据时，本函数自动执行，用来获取后台返回的具体内容
+			success:function (res){
+				console.log(res);
+				console.log(res.info);
+			}
+		});
+	});
+
+	$btns.eq(1).click(function (){
+		$.ajax({
+			//说明请求方式为get请求
+			type:'get',
+			//指明请求要发送到的php后台地址
+			url:'03jqAjax.php?username='+$userNameInput.val()+'&password='+$passwordInput.val(),
+			//指明与后台交互的数据格式为json
+			dataType:'json',
+			//当后台返回具体数据时，本函数自动执行，用来获取后台返回的具体内容
+			success:function (res){
+				console.log(res);
+				console.log(res.info);
+			}
+		});
+	});
+
+	$btns.eq(2).click(function (){
+		$.ajax({
+			//说明请求方式为post请求
+			type:'post',
+			//指明请求要发送到的php后台地址
+			url:'03jqAjax.php',
+			//指明与后台交互的数据格式为json
+			dataType:'json',
+			//post请求独有的字段，目的是存放post数据的参数，格式为json
+			data:{
+				uname:$userNameInput.val(),
+				upass:$passwordInput.val()
+			},
+			//当后台返回具体数据时，本函数自动执行，用来获取后台返回的具体内容
+			success:function (res){
+				console.log(res);
+			}
+		});
+	});
+
+	/*
+		1.AJAX
+		描述：ajax全称是asynchronos javascript and xml
+			  是一种前后端数据交互的手段
+		说明：
+			  原生的ajax实现比较麻烦，需要借助于xmlHttpRequest对象来构建
+			  而今天我们使用的主要是jquery已经封装好的现成的方法	
+		说明：
+			  (1)get无参请求：一般用来向后台获取数据使用，不会发送给后台任何内容
+			  (2)get带参请求：一般像贴吧，社区等需要根据页码或指定属性获取数据时使用。
+			  	              这种情况下参数一般都比较小
+			  (3)post请求：一般用于登录，注册等保密性较高的位置
+	*/
+</script>
+</body>
+</html>
