@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson2_xhr对象</title>
+</head>
+<body>
+<button>发送请求</button>
+<script>
+	var btn = document.querySelector('button');
+	btn.onclick = function (){
+		
+		//(0)创建出一个xhr对象，准备发送ajax请求
+		var xhr = new XMLHttpRequest();
+
+		//(1)onreadystatechange()，目的是监听后台有没有真的接收到发送的请求
+		xhr.onreadystatechange = function (){
+			//(2)在本事件监听中，通过查看readyState属性的值，可以判断当前请求进行到了何种状态
+			if(xhr.readyState == 4){
+				//(3)如果能进入到这个if结构，则代表后台已经接收到了前端发送的请求
+				//    此时可以通过status属性的状态，来判断前端是否准确收到了后台反馈的数据
+				if(xhr.status == 200){
+					//(4)真正接收到了数据，使用responseText属性获取后台反馈的准确数据
+					console.log(xhr.responseText);
+					console.log(typeof xhr.responseText);
+					console.log(JSON.parse(xhr.responseText));
+				}
+			}
+		};
+
+		//(5)当准备好接收后台数据的回调函数后，着手准备发送ajax请求
+		//   通过xhr对象的open方法设置发送目的地
+		xhr.open('get', '02xhr.php', true);
+
+		//(6)在设置完毕后，通过send()方法发送到后台地址
+		xhr.send(null);
+
+	};
+</script>
+</body>
+</html>

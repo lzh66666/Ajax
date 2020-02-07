@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson7_三级联动案例</title>
+	<style>
+		select{  width: 200px; height: 35px;  }
+	</style>
+</head>
+<body>
+<span>省：</span>
+<select class="sheng">
+	<option>请选择</option>
+</select>
+<span>市：</span>
+<select class="shi"></select>
+<span>区：</span>
+<select class="qu"></select>
+<script>
+	var shengSelect = document.querySelector('.sheng');
+	var shiSelect = document.querySelector('.shi');
+	var quSelect = document.querySelector('.qu');
+	// var shengList = ['河北省','黑龙江省','日本省'];
+	// var shiList = [['保定市','石家庄市'],['大庆市','哈尔滨市','齐齐哈尔市'],['广岛市','长崎市']];
+	var quList = [
+					[['保定1区','保定2区'],['石1区','石3区','石9区']],
+					[['大庆2区','大庆11区'],['哈1区','哈2区'],['齐1区','齐4区','齐7区']],
+					[['广岛1区','广岛2区','广岛原子区'],['长崎2区','长崎3区','长崎4区','长崎原子区']]
+				 ];
+	var shengIndex = 0;//选中的省的下标
+
+	//页面加载完成之后，立即发一个ajax请求
+	//请求省数据，以便填充省select
+	(function (){
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function (){
+			if(xhr.readyState==4){
+				if(xhr.status==200){
+					var shengList = JSON.parse(xhr.responseText);
+					for(var i=0; i<shengList.length; i++){
+						var shengOption = new Option(shengList[i]);
+						shengSelect.options.add(shengOption);
+					}
+				}
+			}
+		};
+		//type是get请求传的参数，0代表省，1代表市，2代表区
+		xhr.open('get', '07threeLevelsDemo(3).php?type=0', true);
+		xhr.send(null);
+	}());
+
+	shengSelect.onchange = function (eve){
+		shengIndex = eve.target.selectedIndex-1;
+		//请求市数据
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function (){
+			if(xhr.readyState==4){
+				if(xhr.status==200){
+					var shiList = JSON.parse(xhr.responseText);
+					console.log(shiList);
+					//所有的操作都需要在市数据回来之后进行，在数据未能请求回来之前什么都不做
+					if(shengIndex == -1){
+						shiSelect.options.length = 0;
+						// quSelect.options.length = 0;
+					}else{
+						shiSelect.options.length = 0;
+						// quSelect.options.length = 0;
+						for(var j=0; j<shiList.length; j++){
+							var shiOption = new Option(shiList[j]);	
+							shiSelect.options.add(shiOption);			
+						}
+						// //加载市的同时，加载第一个市的所有的区
+						// for(var k=0; k<quList[shengIndex][0].length; k++){
+						// 	var quOption = new Option(quList[shengIndex][0][k]);
+						// 	quSelect.options.add(quOption);
+						// }
+					}
+				}
+			}
+		};
+		//type是get请求传的参数，0代表省，1代表市，2代表区
+		xhr.open('get', '07threeLevelsDemo(3).php?type=1&sheng='+shengIndex, true);
+		xhr.send(null);
+	};
+	// shiSelect.onchange = function (eve){
+	// 	//市的下标
+	// 	var shiIndex = eve.target.selectedIndex;
+	// 	//
+	// 	quSelect.options.length = 0;
+	// 	for(var n=0; n<quList[shengIndex][shiIndex].length; n++){
+	// 		var quOption = new Option(quList[shengIndex][shiIndex][n]);
+	// 		quSelect.options.add(quOption);
+	// 	}
+	// };
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson1_ajax概述与http协议</title>
+</head>
+<body>
+<script>
+	/*
+		1.为什么实际工作中并不会直接引入jq框架来发送ajax请求
+		(1)因为jq框架中的ajax请求并不能修改，功能并不完善，例如等待超时等功能并没有提供
+		(2)jq框架中除了ajax请求外，还有非常多的用不到的模块
+			这些模块会在引入jq框架的时候一起被引入工程中
+			导致工程变得过大。
+
+		2.什么是dom？
+		dom全称为document object model，意为文档对象模型，是一套管理控制html文档的规则
+		dom将html页面解析为一系列节点构成的树状结构。
+		通过提供对节点的增加删除修改等操作方法，来间接的达到操作页面的目的
+		这就是dom。
+
+		3.jq中提供了哪些常见属性或方法？
+		(1)$()函数与$函数中自带的伪类：[:first][:last][:eq][:lt][:gt][:odd][:even]
+		(2).css()修改css样式、.attr()修改属性、.html()修改内容
+		(3).事件名称()、.bind()、.on()/.off()、.one()事件监听
+		(4).show()/.hide()、.fadeIn()/.fadeOut()、.slideUp()/.slideDown()动画方法
+		(5).animate(动画结束关键帧, 动画时间, 是否匀速, 结束回调函数)
+		(6).append()、.appendTo()、.prepend()、.prependTo()
+		(7).before()、.insertBefore()、.after()、.insertAfter()
+		(8).parent()、.parents()、.children()、.find()、.siblings()、.next()、nextAll
+		(9).clone()、.remove()、.wrap()
+
+		4.ajax请求的“本体”！
+
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState === 4){
+					if(xhr.status == 200){
+						console.log(JSON.parse(xhr.responseText));
+					}else{
+						console.error(xhr.statusText);
+					}
+				}
+			}
+			xhr.onerror = function (e) {
+			  	console.error(xhr.statusText);
+			};
+			xhr.open('GET','ajax.php',true);
+			xhr.timeout = 5000;
+			xhr.send(null);
+	*/
+
+</script>
+</body>
+</html>

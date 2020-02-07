@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson5-进度条</title>
+</head>
+<body>
+<progress min='0' max='100' value='0'></progress>
+<br/>
+<input type="file" class="tempFile" multiple>
+<button onclick='ajaxSubmit()'>上传文件</button>
+<script>
+	function ajaxSubmit(){
+		var files = document.querySelector('.tempFile').files;
+		//因为不确定有多少个文件要上传，所以有多少，往FormData里面丢多少
+		var formData = new FormData();
+		for(var i=0; i<files.length; i++){
+			var file = files[i];
+			formData.append('myfile'+i, file)
+		}
+		//ajax上传
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function (){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					console.log(xhr.responseText);
+				}
+			}
+		};
+
+		var progressBar = document.querySelector('progress');
+		//上传文件的进度回调，上传进度只要发生变化，本函数就会自动执行
+		xhr.upload.onprogress = function (eve){
+			//eve.lengthComputable表示文件是否上传进度为100%
+			//默认是true，表示没有100%
+			//当进度为100%时自动变为false
+			if(eve.lengthComputable){
+				progressBar.value = (eve.loaded/eve.total) * 100;
+			}
+		};
+
+		//准备发送
+		xhr.open('post', '04progressDemo.php', true);
+		xhr.send(formData);
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson3_xhr对象post请求与兼容性问题</title>
+</head>
+<body>
+
+<label for="username">
+	<span>用户名：</span><input type="text" class="username" id="username">
+</label>
+<br/>
+<label for="password">
+	<span>密码：</span><input type="text" class="password" id="password">
+</label>
+<br/>
+<button>登录</button>
+<script>
+	var usernameInput = document.querySelector('.username');
+	var passowrdInput = document.querySelector('.password');
+	var btn = document.querySelector('button');
+	btn.onclick = function (){
+		//兼容性问题，考虑兼容IE使用ActiveXObject()类对xhr对象进行实例化
+		var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('');
+		// var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function (){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					var jsonData = JSON.parse(xhr.responseText);
+					console.log(jsonData);
+				}
+			}
+		};
+		//构建post表单数据，使用FormData类构建数据
+		var datas = new FormData();
+		datas.append('uname', usernameInput.value);
+		datas.append('upass', passowrdInput.value);
+		//
+		xhr.open('post', '03post&compatible.php', true);
+		xhr.send(datas);
+	};
+</script>
+</body>
+</html>
