@@ -1,0 +1,80 @@
+/*
+* create by frank on 2018/02/22 02:36
+* paginationTool cascading style sheet
+*/
+
+.ts-page{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 100px;
+    -moz-user-select:none;
+}
+.ts-page span{
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding:0 12px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    margin:0 4px;
+    box-shadow: 0px 2px 3px gray;
+}
+.ts-page .tspage-ell{
+    cursor:auto;
+    background-color: #f2f2f2;
+    box-shadow: none;
+    margin:0;
+}
+.ts-page span.disable{
+    cursor: not-allowed;
+    color:#333;
+}
+.ts-page .page.on{
+    background-color: #109d59;
+    color: #fff;
+}
+
+
+.out .in{
+    position: relative;
+    box-sizing: border-box;
+}
+.out .in img{
+    display: block;
+    float: left;
+
+}
+.out .in .boxx{
+    display: block;
+    float: left;
+    margin-left: 10%;
+}
+
+.out .in .boxx h3{
+    display: block;
+}
+.out .in .boxx span{
+    display: block;
+}
+.out .in .dtype{
+    float: right;
+    width: 20%;
+    text-align: center;
+    color: lightblue;
+    border: 1px solid lightblue;
+    border-radius: 30%;
+    font-size: 20px;
+
+}
+
+.out .in p{
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    text-indent: 2em;
+    line-height: 28px;
+}
