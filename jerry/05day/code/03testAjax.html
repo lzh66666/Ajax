@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson3_测试自己封装的ajax框架</title>
+	<style>
+	 	.getModal{  border: 1px solid black; padding: 10px; width: 420px; margin-bottom: 20px;  }
+	 	.postModal{  border: 1px solid black; padding: 10px; width: 420px;  }
+	</style>
+</head>
+<body>	
+	<!-- 03测试自定义ajax框架 -->
+<div class="getModal">
+	<span>get's UserName:</span><input type="text" class="getUserName"><br/>
+	<span>get's Password:</span><input type="password" class="getPassword"><br/>
+	<button class="get_noparam_btn">send get request without params</button>
+	&nbsp;&nbsp;
+	<button class="get_param_btn">send get request with params</button>
+</div>
+<div class="postModal">
+	<span>post's UserName:</span><input type="text" class="postUserName"><br/>
+	<span>post's Password:</span><input type="password" class="postPassword"><br/>
+	<button class="post_btn">send post request</button>
+</div>
+<script src="js/frankAjax.js"></script>
+<script>
+	//页面元素
+	var getUserNameInput = document.querySelector('.getUserName');
+	var getPasswordInput = document.querySelector('.getPassword');
+	var postUserNameInput = document.querySelector('.postUserName');
+	var postPasswordInput = document.querySelector('.postPassword');
+	var get_noparam_btn = document.querySelector('.get_noparam_btn');
+	var get_param_btn = document.querySelector('.get_param_btn');
+	var post_btn = document.querySelector('.post_btn');
+
+	//测试get无参请求
+	get_noparam_btn.onclick = function (){
+		window.frankAjax({
+			type:'get',
+			url:'03testAjax.php',
+			success:function (res){
+				console.log(res.imgSrc);
+				//test
+				var img = document.createElement('img');
+				img.src = res.imgSrc;
+				document.body.appendChild(img);
+			}
+		});
+	};
+	//测试get有参请求
+	get_param_btn.onclick = function (){
+		window.frankAjax({
+			type:'get',
+			url:'03testAjax.php',
+			data:{
+				getName:getUserNameInput.value,
+				getPass:getPasswordInput.value
+			},
+			success:function (res){
+				console.log(res);
+			}
+		});
+	};
+	//测试post请求
+	post_btn.onclick = function (){
+		window.frankAjax({
+			type:'post',
+			url:'03testAjax.php',
+			data:{
+				postName:postUserNameInput.value,
+				postPass:postPasswordInput.value
+			},
+			success:function (res){
+				console.log(res);
+			}
+		});
+	};
+
+
+</script>
+</body>
+</html>

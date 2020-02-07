@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson6_ajax跨域问题</title>
+</head>
+<body>
+	<!-- 06ajax请求的跨域问题与解决方案 -->
+<button>发送请求</button>
+<script src="js/frankAjax.js"></script>
+<script>
+
+	/*
+		同源政策目的：
+			只有同一个服务器上的文件之间才能互相交互
+			多个服务器之间的文件禁止互相交互
+
+		使用script标签引入文件的方式，来规避同源政策，实现跨域访问
+	*/
+
+	document.querySelector('button').onclick = function (){
+		// window.frankAjax({
+		// 	type:'get',
+		// 	url:'06acrossDomin.php',
+		// 	success:function (res){
+		// 		console.log(res);
+		// 	}
+		// });
+	};
+</script>
+</body>
+</html>

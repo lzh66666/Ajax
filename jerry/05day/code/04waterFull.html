@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson4_动态数据瀑布流</title>
+	<link rel="stylesheet" type="text/css" href="css/initialize.css">
+	<style>
+		.out{  position: relative; margin: 0 auto;  }
+		.in{  float: left;  }
+		img{
+			margin: 10px;
+			padding: 10px;
+			border: 1px solid lightgray;
+			border-radius: 15px;
+			box-shadow: 0px 0px 5px orange;
+		}
+	</style>
+</head>
+<body>
+<div class="out"></div>
+<script>
+	// 04自定义ajax框架实际案例瀑布流
+	//这个数组模拟ajax请求来的后台数据
+	var dataArr = ['img/i1.jpg','img/i2.jpg','img/i3.jpg','img/i4.jpg','img/i5.jpg','img/i6.jpg','img/i7.jpg','img/i8.jpg','img/i9.jpg','img/i10.jpg','img/i11.jpg','img/i12.jpg','img/i13.jpg','img/i14.jpg','img/i15.jpg'];
+	//准备页面元素
+	var outDiv = document.querySelector('.out');
+
+	//当数据准备完毕后，先将数据加载到页面中
+	for(var i=0; i<dataArr.length; i++){
+		var div = document.createElement('div');
+		div.className = 'in';
+		div.innerHTML = '<img src="'+dataArr[i]+'">';
+		outDiv.appendChild(div);
+	}
+	//当页面图片加载完成后，构建瀑布流结构
+	window.onload = function (){
+		var inDivs = document.querySelectorAll('.in');
+		var num = Math.floor(document.documentElement.clientWidth/inDivs[0].offsetWidth);
+		outDiv.style.width = num*inDivs[0].offsetWidth+'px';
+		var heightArr = [];//存放第一行图片的高度
+
+		//所有的div中除了第一行的，都要定位
+		for(var i=0; i<inDivs.length; i++){
+			if(i<num){
+				//第一行
+				heightArr.push(inDivs[i].offsetHeight);
+			}else{
+				//其余所有行
+				inDivs[i].style.position = 'absolute';
+				minHeight = Math.min.apply(null, heightArr);
+				minIndex = heightArr.indexOf(minHeight);
+				//开启定位
+				inDivs[i].style.top = minHeight+'px';
+				inDivs[i].style.left = inDivs[minIndex].offsetLeft+'px';
+				//将高度数组中高度累加
+				heightArr[minIndex] += inDivs[i].offsetHeight;
+			}
+		}
+	};
+
+
+</script>
+</body>
+</html> 

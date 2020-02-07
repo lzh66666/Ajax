@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset='utf-8'/>
+	<title>lesson5_动态数据瀑布流</title>
+	<link rel="stylesheet" type="text/css" href="css/initialize.css">
+	<style>
+		.out{  position: relative; margin: 0 auto;  }
+		.in{  float: left;  }
+		img{
+			margin: 10px;
+			padding: 10px;
+			border: 1px solid lightgray;
+			border-radius: 15px;
+			box-shadow: 0px 0px 5px orange;
+		}
+	</style>
+</head>
+<body>
+	<!-- 05自定义ajax框架实际案例瀑布流 -->
+<div class="out"></div>
+<script src="js/frankAjax.js"></script>
+<script>
+	window.onload = function (){
+		//等到页面彻底加载完毕后，在发送ajax请求
+		window.frankAjax({
+			type:'get',
+			url:'05waterFull.php',
+			success:function (res){
+				var dataArr = res.info;
+				//当数据请求完毕后，开始处理页面
+				var outDiv = document.querySelector('.out');
+				for(var i=0; i<dataArr.length; i++){
+					var div = document.createElement('div');
+					div.className = 'in';
+					div.innerHTML = '<img src="'+dataArr[i]+'">';
+					outDiv.appendChild(div);
+				}
+				//准备构建瀑布流的必要信息
+				var inDivs = document.querySelectorAll('.in');
+				var num = Math.floor(document.documentElement.clientWidth/inDivs[0].offsetWidth);
+				outDiv.style.width = num*inDivs[0].offsetWidth+'px';
+				var heightArr = [];
+				//构建瀑布流
+				for(var i=0; i<inDivs.length; i++){
+					if(i<num){
+						heightArr.push(inDivs[i].offsetHeight);
+					}else{
+						inDivs[i].style.position = 'absolute';
+						minHeight = Math.min.apply(null, heightArr);
+						minIndex = heightArr.indexOf(minHeight);
+						inDivs[i].style.top = minHeight+'px';
+						inDivs[i].style.left = inDivs[minIndex].offsetLeft+'px';
+						heightArr[minIndex] += inDivs[i].offsetHeight;
+					}
+				}
+			}
+		});
+	};
+</script>
+</body>
+</html>
