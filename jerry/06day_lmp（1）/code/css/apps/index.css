@@ -1,0 +1,273 @@
+body{
+            background: darkgray;
+            /*height: 5000px;*/
+        }
+        .gray{
+
+            background: rgb(245,245,245);
+        }
+        /*顶部轮播*/
+        .swiper-hd .swiper-slide{
+            /*background: url('img/lmp-banner.png') no-repeat 50%;
+            background-size: cover;*/
+            height: 500px;
+            position: relative;
+        }
+        .swiper-hd .swiper-pagination-bullet{
+            background: rgb(78,78,78);
+            width: 13px;
+            height: 13px;
+            opacity: 1;
+        }
+        .swiper-hd .swiper-pagination-bullet-active{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .ss-hd-text{
+            position: absolute;
+            top: 143px;
+            left: 100px;
+            width: 573px;
+            height: 182px;
+            padding: 24px 16px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+        }
+        .ss-hd-text p{
+            line-height: 34px;/*14文字高度+上下10px间距*/
+            margin-top: 15px;
+        }
+        /*乐章模块*/
+        .swiper-yz{
+
+            margin-bottom: 50px;
+        }
+        .swiper-yz .swiper-pagination-bullet{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .swiper-yz .swiper-pagination-bullet-active{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .swiper-yz .swiper-wrapper{
+
+            margin-bottom: 50px;
+        }
+        .swiper-yz .slide1 .oneItem{
+            width: 630px;
+            height: 208px;
+            float: left;
+            margin-left: 29px;
+            margin-bottom: 20px;
+        }
+        .swiper-yz .slide1 .oneItem-img{
+            /*background: url("img/header-yz-img.png") no-repeat;*/
+            width: 208px;
+            height: 208px;
+            float: left;
+        }
+        .swiper-yz .slide1 .oneItem-text{
+            float: left;
+            width: 402px;
+            height: 188px;
+            padding: 10px;
+        }
+        /*听说模块*/
+        .ts-container{
+            width: 89%;
+            height: 554px;
+            margin: 0 auto 50px auto;
+            position: relative;
+        }
+        .ts-container .ts-container-item{
+            width: 240px;
+            height: 277px;
+            position: absolute;
+        }
+        .ts-container .ts-container-item:nth-child(2){
+            top: 0;
+            left: 480px;
+        }
+        .ts-container .ts-container-item:nth-child(3){
+            top: 0;
+            left: 960px;
+        }
+        .ts-container .ts-container-item:nth-child(4){
+            top: 277px;
+            left: 240px;
+        }
+        .ts-container .ts-container-item:nth-child(5){
+            top: 277px;
+            left: 720px;
+        }
+        .ts-container .ts-container-text{
+            width: 0;
+            height: 277px;
+            position: absolute;
+            background: lightblue;
+            overflow: hidden;
+        }
+        /*乐趣*/
+        .swiper-lq{
+            margin-bottom: 50px;
+        }
+        .swiper-lq .swiper-pagination-bullet{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .swiper-lq .swiper-pagination-bullet-active{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .swiper-lq .swiper-wrapper{
+            margin-bottom: 50px;
+        }
+        .swiper-lq .slide1 .oneItem{
+            width: 630px;
+            height: 208px;
+            float: left;
+            margin-left: 29px;
+            margin-bottom: 20px;
+        }
+        .swiper-lq .slide1 .oneItem-img{
+            /*background: url("img/header-lq-img1.png") no-repeat;
+            background-size: 100%;*/
+            width: 208px;
+            height: 208px;
+            float: left;
+        }
+        .swiper-lq .slide1 .oneItem-text{
+            float: left;
+            width: 402px;
+            height: 188px;
+            padding: 10px;
+        }
+        /*聊聊*/
+        .swiper-ll{
+            margin-bottom: 50px;
+        }
+        .swiper-ll .swiper-pagination-bullet{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .swiper-ll .swiper-pagination-bullet-active{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .swiper-ll .swiper-wrapper{
+            margin-bottom: 50px;
+        }
+        .swiper-ll .slide1 .oneItem{
+            width: 400px;
+            height: 208px;
+            float: left;
+            margin-left: 29px;
+            margin-bottom: 20px;
+        }
+        .swiper-ll .slide1 .oneItem-img{
+            background: skyblue;
+            background-size: 100%;
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+            float: left;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+        .swiper-ll .slide1 .oneItem-text{
+            float: left;
+            width: 296px;
+            height: 188px;
+            padding: 10px;
+        }
+        /*游记*/
+        .swiper-yj{
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+        .swiper-yj .swiper-pagination-bullet{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .swiper-yj .swiper-pagination-bullet-active{
+            background: rgb(16,157,89);
+            width: 13px;
+            height: 13px;
+        }
+        .swiper-yj .swiper-wrapper{
+            margin-bottom: 50px;
+        }
+        .swiper-yj li{
+            cursor: pointer;
+            width: 23.5%;
+            height: 455px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            float: left;
+            position: relative;
+        }
+        .swiper-yj .yjItem{
+            margin-right: 1.75%;
+            overflow: hidden;
+        }
+        .swiper-yj .yjitem{
+            overflow: hidden;
+        }
+        .swiper-yj li .yj-img{
+            /*background: url("img/header-yj-img1.png") no-repeat;
+            background-size: cover;*/
+            width: 100%;
+            margin: 0 auto;
+            height: 376px;
+            border-radius: 5px 5px 0 0;
+        }
+        .swiper-yj li .yj-title{
+            margin: 19px 10px 12px 10px;
+            font-size: 16px;
+            color: rgb(51,51,51);
+        }
+        .swiper-yj li .yj-author{
+            color: rgb(109,199,250);
+            margin-left: 10px;
+        }
+        .swiper-yj li .yj-text{
+            overflow: hidden;
+            background: rgba(0,0,0,0.5);
+            height: 136px;
+            position: absolute;
+            top: 25%;
+            width: 285px;
+            left: 285px;
+        }
+        .swiper-yj li .yj-text p{
+            margin: 30px 12px 30px 17px;
+            font-size: 16px;
+            color: white;
+        }
+        /*照片墙*/
+        .imgWall{
+            width: 90%;
+            margin: 50px auto 140px auto;
+        }
+        .imgWall table{
+            width: 100%;
+            height: 573px;
+        }
+        .imgWall table td{
+            width: 300px;
+            height: 190px;
+            cursor: pointer;
+        }
